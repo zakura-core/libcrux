@@ -52,9 +52,11 @@
 #![no_std]
 
 #[cfg(all(hax, not(feature = "hax")))]
-compile_error!("building with `--cfg hax` (e.g. `cargo hax`) requires the `hax` feature");
+compile_error!(
+    "building with `--cfg hax` (e.g. `cargo hax`) requires the `libcrux-secrets/hax` feature (or `hax` on the libcrux crate you depend on)"
+);
 #[cfg(all(valgrind_ct_test, not(feature = "valgrind-ct-test")))]
-compile_error!("building with `--cfg valgrind_ct_test` requires the `valgrind-ct-test` feature");
+compile_error!("building with `--cfg valgrind_ct_test` requires the `libcrux-secrets/valgrind-ct-test` feature");
 
 mod traits;
 pub use traits::*;

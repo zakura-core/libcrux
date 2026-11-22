@@ -64,6 +64,19 @@ std = [
     "hpke-rs-crypto/std",
 ]
 
+# Proof tooling: enables the `hax` feature of the libcrux dependencies, which
+# builds with `--cfg hax` (e.g. `cargo hax`) need.
+hax = [
+    "libcrux-aead/hax",
+    "libcrux-ecdh/hax",
+    "libcrux-hkdf/hax",
+    "libcrux-hmac-drbg/hax",
+    "libcrux-kem/hax",
+    "libcrux-p384/hax",
+    "libcrux-sha3/hax",
+    "libcrux-traits/hax",
+]
+
 [[bench]]
 name = "bench_hkdf"
 harness = false

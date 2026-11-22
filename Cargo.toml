@@ -250,6 +250,35 @@ all_protocols = ["std", "all-protocols-no-std", "psq"]
 hpke = ["dep:hpke-rs"]
 psq = ["std", "dep:libcrux-psq"]                       # Requires `std`.
 
+# Proof tooling. Builds with `--cfg hax` (e.g. `cargo hax`) need this feature;
+# it enables the `hax` feature of the libcrux dependencies. `hax-lib` is
+# optional so that it stays out of downstream lockfiles.
+hax = [
+    "dep:hax-lib",
+    "hpke-rs?/hax",
+    "libcrux-aead?/hax",
+    "libcrux-aes?/hax",
+    "libcrux-blake2?/hax",
+    "libcrux-chacha20poly1305?/hax",
+    "libcrux-curve25519?/hax",
+    "libcrux-digest?/hax",
+    "libcrux-ecdsa?/hax",
+    "libcrux-ed25519?/hax",
+    "libcrux-hkdf?/hax",
+    "libcrux-hmac?/hax",
+    "libcrux-hmac-drbg?/hax",
+    "libcrux-kem?/hax",
+    "libcrux-kmac?/hax",
+    "libcrux-ml-dsa?/hax",
+    "libcrux-ml-kem?/hax",
+    "libcrux-nist-kdf?/hax",
+    "libcrux-p256?/hax",
+    "libcrux-psq?/hax",
+    "libcrux-rsa?/hax",
+    "libcrux-sha2?/hax",
+    "libcrux-sha3?/hax",
+]
+
 [dependencies]
 getrandom = { version = "0.4", optional = true }
 # WASM API
@@ -296,7 +325,7 @@ libcrux-psq = { workspace = true, optional = true }
 
 
 [target.'cfg(hax)'.dependencies]
-hax-lib.workspace = true
+hax-lib = { workspace = true, optional = true }
 
 [build-dependencies]
 libcrux-platform = { version = "=0.0.4", path = "crates/sys/platform" }

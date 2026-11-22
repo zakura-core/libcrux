@@ -115,7 +115,7 @@ class extractAction(argparse.Action):
             "hax",
             "-C",
             "--features",
-            "simd128,simd256,libcrux-intrinsics/hax,libcrux-secrets/hax",
+            "simd128,simd256,hax",
             ";",
             "into",
             "-i",

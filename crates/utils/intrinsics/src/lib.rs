@@ -1,4 +1,10 @@
 #![no_std]
+
+#[cfg(all(hax, not(feature = "hax")))]
+compile_error!(
+    "building with `--cfg hax` (e.g. `cargo hax`) requires the `libcrux-intrinsics/hax` feature (or `hax` on the libcrux crate you depend on)"
+);
+
 #[cfg(all(feature = "simd128", not(hax)))]
 pub mod arm64;
 #[cfg(all(feature = "simd256", not(hax)))]

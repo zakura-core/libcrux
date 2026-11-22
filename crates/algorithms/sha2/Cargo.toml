@@ -13,6 +13,10 @@ repository.workspace = true
 [features]
 expose-hacl = []
 
+# Proof tooling: enables the `hax` feature of the libcrux dependencies, which
+# builds with `--cfg hax` (e.g. `cargo hax`) need.
+hax = ["libcrux-traits/hax"]
+
 [dependencies]
 libcrux-hacl-rs.workspace = true
 libcrux-macros.workspace = true

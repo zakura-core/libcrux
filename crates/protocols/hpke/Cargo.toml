@@ -62,6 +62,10 @@ draft-ietf-hpke-pq = [
 
 hpke-test = ["std"]
 
+# Proof tooling: enables the `hax` feature of the libcrux dependencies, which
+# builds with `--cfg hax` (e.g. `cargo hax`) need.
+hax = ["hpke-rs-libcrux?/hax", "libcrux-sha3/hax"]
+
 [dev-dependencies]
 hpke-rs-crypto = { workspace = true, features = ["std"] }
 serde_json = "1.0"

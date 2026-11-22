@@ -9,7 +9,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 
-- [#XXXX](https://github.com/celabshq/libcrux/pull/XXXX): `hax-lib` and `core-models` are now optional dependencies behind the new `hax` feature, so they are no longer added to the `Cargo.lock` of dependent crates. Builds with `--cfg hax` (`cargo hax`) must enable the `hax` feature.
+- [#XXXX](https://github.com/celabshq/libcrux/pull/XXXX): `hax-lib` and `core-models` are now optional dependencies behind the new `hax` feature, so they are no longer added to the `Cargo.lock` of dependent crates. Builds with `--cfg hax` (`cargo hax`) must enable the `hax` feature; downstream crates enable `hax` on the libcrux crate they depend on.
 
 ## [0.0.10] (2026-11-19)
 

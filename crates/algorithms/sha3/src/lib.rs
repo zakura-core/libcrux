@@ -7,7 +7,9 @@
 #![deny(missing_docs)]
 
 #[cfg(all(hax, not(feature = "hax")))]
-compile_error!("building with `--cfg hax` (e.g. `cargo hax`) requires the `hax` feature");
+compile_error!(
+    "building with `--cfg hax` (e.g. `cargo hax`) requires the `libcrux-sha3/hax` feature (or `hax` on the libcrux crate you depend on)"
+);
 
 mod simd;
 

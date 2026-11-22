@@ -16,6 +16,10 @@ path = "src/hmac.rs"
 [features]
 expose-hacl = []
 
+# Proof tooling: enables the `hax` feature of the libcrux dependencies, which
+# builds with `--cfg hax` (e.g. `cargo hax`) need.
+hax = ["libcrux-sha2/hax", "libcrux-sha3/hax", "libcrux-traits/hax"]
+
 [dependencies]
 libcrux-hacl-rs.workspace = true
 libcrux-sha2 = { workspace = true, features = ["expose-hacl"] }

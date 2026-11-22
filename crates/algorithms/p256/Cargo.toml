@@ -26,6 +26,10 @@ check-secret-independence = [
     "libcrux-traits/check-secret-independence",
 ]
 
+# Proof tooling: enables the `hax` feature of the libcrux dependencies, which
+# builds with `--cfg hax` (e.g. `cargo hax`) need.
+hax = ["libcrux-secrets/hax", "libcrux-sha2/hax", "libcrux-traits/hax"]
+
 
 [dev-dependencies]
 libcrux-p256 = { path = ".", features = ["expose-hacl"] }

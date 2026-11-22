@@ -4,7 +4,9 @@
 #![no_std]
 
 #[cfg(all(hax, not(feature = "hax")))]
-compile_error!("building with `--cfg hax` (e.g. `cargo hax`) requires the `hax` feature");
+compile_error!(
+    "building with `--cfg hax` (e.g. `cargo hax`) requires the `libcrux-kmac/hax` feature (or `hax` on the libcrux crate you depend on)"
+);
 
 mod internals {
     pub(super) mod kmac;

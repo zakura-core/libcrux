@@ -32,6 +32,10 @@ acvp = []
 simd128 = ["libcrux-intrinsics/simd128"]
 simd256 = ["libcrux-intrinsics/simd256"]
 
+# Proof tooling: enables the `hax` feature of the libcrux dependencies, which
+# builds with `--cfg hax` (e.g. `cargo hax`) need.
+hax = ["libcrux-intrinsics/hax", "libcrux-secrets/hax", "libcrux-traits/hax"]
+
 [[bench]]
 harness = false
 name = "aesgcm"

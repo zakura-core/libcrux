@@ -21,3 +21,12 @@ blake2 = ["dep:libcrux-blake2", "dep:libcrux-traits"]
 default = ["blake2", "sha2", "sha3"]
 sha2 = ["dep:libcrux-sha2", "dep:libcrux-traits"]
 sha3 = ["dep:libcrux-sha3", "dep:libcrux-traits"]
+
+# Proof tooling: enables the `hax` feature of the libcrux dependencies, which
+# builds with `--cfg hax` (e.g. `cargo hax`) need.
+hax = [
+    "libcrux-blake2?/hax",
+    "libcrux-sha2?/hax",
+    "libcrux-sha3?/hax",
+    "libcrux-traits?/hax",
+]

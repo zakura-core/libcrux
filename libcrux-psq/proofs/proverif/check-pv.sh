@@ -85,8 +85,6 @@ if [ "${NO_EXTRACT:-0}" != 1 ]; then
   # Add it for the extraction only, and restore the manifest and lockfile
   # afterwards.
   HAX_LIB_VERSION="${HAX_LIB_VERSION:-0.5.0}"
-  # The dependencies' `cfg(hax)` code needs their optional `hax` feature.
-  HAX_FEATURES="libcrux-ml-kem/hax,libcrux-ml-dsa/hax"
   BAK="$(mktemp -d)"
   cp "$WS/libcrux-psq/Cargo.toml" "$BAK/"
   # Cargo.lock is not committed; a fresh checkout has none.
@@ -100,7 +98,7 @@ if [ "${NO_EXTRACT:-0}" != 1 ]; then
   trap restore_manifest EXIT INT TERM
   ( cd "$WS" && cargo add -q -p libcrux-psq --target 'cfg(hax)' "hax-lib@=$HAX_LIB_VERSION" ) \
     || { echo "could not add hax-lib $HAX_LIB_VERSION to libcrux-psq"; exit 1; }
-  ( cd "$WS" && cargo hax -C -p libcrux-psq --features "$HAX_FEATURES" ';' into -i "$INC" proverif )
+  ( cd "$WS" && cargo hax -C -p libcrux-psq --features hax ';' into -i "$INC" proverif )
   restore_manifest; trap - EXIT INT TERM
   for f in lib.pvl missingdecl.pvl; do
     [ -s "$EX/$f" ] || { echo "EXTRACTION FAILED: $EX/$f was not written"; exit 1; }
