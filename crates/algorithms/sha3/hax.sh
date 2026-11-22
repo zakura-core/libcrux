@@ -10,10 +10,12 @@ function extract_all() {
     rename_core_models_files crates/utils/core-models
 
     extract crates/utils/intrinsics \
+        -C --features hax ";" \
         into -i "-core_models::**" \
         fstar --z3rlimit 80 --interfaces "+**"
 
     extract crates/utils/secrets \
+        -C --features hax ";" \
         into -i "+**" \
         fstar --z3rlimit 80
     
@@ -23,6 +25,7 @@ function extract_all() {
     # result is a fixed-length `t_Array u8 v_LEN`. An interface would erase that to
     # `t_Slice u8` with a trivial postcondition and the subtyping check fails.
     extract crates/algorithms/sha3 \
+        -C --features hax ";" \
         into -i "+**" \
         -i "-**::avx2::**" \
         -i "-**::arm64::**" \

@@ -2,6 +2,11 @@
 #![deny(unsafe_code)]
 #![deny(unused_qualifications)]
 
+#[cfg(all(hax, not(feature = "hax")))]
+compile_error!(
+    "building with `--cfg hax` (e.g. `cargo hax`) requires the `libcrux-ml-dsa/hax` feature (or `hax` on the libcrux crate you depend on)"
+);
+
 #[cfg(feature = "std")]
 extern crate std;
 

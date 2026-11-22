@@ -26,3 +26,7 @@ wycheproof = "0.7.0"
 [features]
 rand = ["dep:rand_core"]
 codec = ["tls_codec/std"]
+
+# Proof tooling: enables the `hax` feature of the libcrux dependencies, which
+# builds with `--cfg hax` (e.g. `cargo hax`) need.
+hax = ["libcrux-sha2/hax"]

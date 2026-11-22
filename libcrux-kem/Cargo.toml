@@ -35,6 +35,17 @@ pre-verification = []
 # Encoding and decoding with TLSCodec
 codec = ["dep:tls_codec", "libcrux-ml-kem/codec", "libcrux-ecdh/codec"]
 
+# Proof tooling: enables the `hax` feature of the libcrux dependencies, which
+# builds with `--cfg hax` (e.g. `cargo hax`) need.
+hax = [
+    "libcrux-curve25519/hax",
+    "libcrux-ecdh/hax",
+    "libcrux-ml-kem/hax",
+    "libcrux-p256/hax",
+    "libcrux-sha3/hax",
+    "libcrux-traits/hax",
+]
+
 [dev-dependencies]
 libcrux-kem = { path = "./", features = ["tests"] }
 rand = { version = "0.10", features = ["sys_rng"] }

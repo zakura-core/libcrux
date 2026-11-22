@@ -8,6 +8,11 @@
 // Enable doc cfg feature for doc builds. They use nightly.
 #![cfg_attr(doc_cfg, feature(doc_cfg))]
 
+#[cfg(all(hax, not(feature = "hax")))]
+compile_error!(
+    "building with `--cfg hax` (e.g. `cargo hax`) requires the `libcrux-ml-kem/hax` feature (or `hax` on the libcrux crate you depend on)"
+);
+
 #[cfg(feature = "std")]
 extern crate std;
 

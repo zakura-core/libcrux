@@ -27,6 +27,10 @@ default = ["std"]
 std = ["rand/std", "tls_codec?/std"]
 codec = ["dep:tls_codec"]
 
+# Proof tooling: enables the `hax` feature of the libcrux dependencies, which
+# builds with `--cfg hax` (e.g. `cargo hax`) need.
+hax = ["libcrux-curve25519/hax", "libcrux-p256/hax"]
+
 [dev-dependencies]
 libcrux-kats = { workspace = true, features = ["kas-ecc"] }
 rand = { version = "0.10", features = ["sys_rng"] }

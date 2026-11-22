@@ -13,6 +13,11 @@ repository.workspace = true
 [dependencies]
 libcrux-hmac.workspace = true
 
+[features]
+# Proof tooling: enables the `hax` feature of the libcrux dependencies, which
+# builds with `--cfg hax` (e.g. `cargo hax`) need.
+hax = ["libcrux-hmac/hax"]
+
 [dev-dependencies]
 hex = "0.4.3"
 libcrux-kats = { workspace = true, features = ["kbkdf", "kda"] }

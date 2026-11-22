@@ -56,6 +56,21 @@ classic-mceliece = ["dep:classic-mceliece-rust", "rand_old"]
 # ⚠️ CAUTION! Enabling this makes it the responsibility of the application to avoid nonce re-use.
 nonce-control = []
 
+# Proof tooling: enables the `hax` feature of the libcrux dependencies, which
+# builds with `--cfg hax` (e.g. `cargo hax`) need.
+hax = [
+    "libcrux-aes/hax",
+    "libcrux-chacha20poly1305/hax",
+    "libcrux-ecdh/hax",
+    "libcrux-ed25519/hax",
+    "libcrux-hkdf/hax",
+    "libcrux-kem/hax",
+    "libcrux-ml-dsa/hax",
+    "libcrux-ml-kem/hax",
+    "libcrux-sha2/hax",
+    "libcrux-traits/hax",
+]
+
 [[bench]]
 name = "psq_v2"
 harness = false

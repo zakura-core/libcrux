@@ -26,3 +26,12 @@ check-secret-independence = [
     "libcrux-secrets/check-secret-independence",
     "libcrux-traits/check-secret-independence",
 ]
+
+# Proof tooling: enables the `hax` feature of the libcrux dependencies, which
+# builds with `--cfg hax` (e.g. `cargo hax`) need.
+hax = [
+    "libcrux-aes?/hax",
+    "libcrux-chacha20poly1305?/hax",
+    "libcrux-secrets/hax",
+    "libcrux-traits?/hax",
+]

@@ -98,7 +98,7 @@ if [ "${NO_EXTRACT:-0}" != 1 ]; then
   trap restore_manifest EXIT INT TERM
   ( cd "$WS" && cargo add -q -p libcrux-psq --target 'cfg(hax)' "hax-lib@=$HAX_LIB_VERSION" ) \
     || { echo "could not add hax-lib $HAX_LIB_VERSION to libcrux-psq"; exit 1; }
-  ( cd "$WS" && cargo hax -C -p libcrux-psq ';' into -i "$INC" proverif )
+  ( cd "$WS" && cargo hax -C -p libcrux-psq --features hax ';' into -i "$INC" proverif )
   restore_manifest; trap - EXIT INT TERM
   for f in lib.pvl missingdecl.pvl; do
     [ -s "$EX/$f" ] || { echo "EXTRACTION FAILED: $EX/$f was not written"; exit 1; }

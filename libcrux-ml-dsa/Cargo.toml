@@ -47,8 +47,8 @@ libcrux-kats = { workspace = true, features = ["mldsa"] }
 pqcrypto-mldsa = { version = "0.1.0" } #, default-features = false
 
 [target.'cfg(hax)'.dependencies]
-core-models = { path = "../crates/utils/core-models", version = "0.0.7" }
-hax-lib.workspace = true
+core-models = { path = "../crates/utils/core-models", version = "0.0.7", optional = true }
+hax-lib = { workspace = true, optional = true }
 
 [features]
 default = ["std", "mldsa44", "mldsa65", "mldsa87"]
@@ -67,6 +67,17 @@ std = ["tls_codec?/std"]
 
 # Serialization & Deserialization using tls_codec
 codec = ["dep:tls_codec"]
+
+# Proof tooling. `cargo hax` builds with `--cfg hax` and needs this feature
+# for the `cfg(hax)` code; it is optional so that `hax-lib` stays out of
+# the lockfiles of crates that depend on this one.
+hax = [
+    "dep:hax-lib",
+    "dep:core-models",
+    "libcrux-intrinsics/hax",
+    "libcrux-secrets/hax",
+    "libcrux-sha3/hax",
+]
 
 [[bench]]
 name = "manual44"

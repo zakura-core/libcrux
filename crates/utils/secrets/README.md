@@ -19,6 +19,10 @@ will mark the memory as `Undefined` for valgrind.
 
 Enabling only the `cfg`, but not the feature, will result in some valgrind requests being issued in the swap/select implementations.
 
+Builds with `--cfg valgrind_ct_test` must also enable the `valgrind-ct-test` feature,
+which provides the `crabgrind` dependency. It is a separate, optional feature so that
+`crabgrind` does not end up in the `Cargo.lock` of crates that depend on this one.
+
 Every `declassify`, `declassify_ref`, `declassify_ref_mut` and `declassify_mut_slice`
 will mark the memory as `Defined` for valgrind. When running the resulting binary under
 valgrind, it will track the uses of `Undefined` memory on a bit level and report

@@ -23,6 +23,10 @@ default = ["rand", "std"]
 rand = ["dep:rand"]
 std = ["rand?/std"]
 
+# Proof tooling: enables the `hax` feature of the libcrux dependencies, which
+# builds with `--cfg hax` (e.g. `cargo hax`) need.
+hax = ["libcrux-p256/hax", "libcrux-secrets/hax", "libcrux-sha2/hax"]
+
 [dev-dependencies]
 rand_core = { version = "0.10" }
 rand = { version = "0.10", features = ["sys_rng"] }

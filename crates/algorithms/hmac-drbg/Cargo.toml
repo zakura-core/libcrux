@@ -34,6 +34,10 @@ _testing-apis = []
 # Error::HealthCheckFailed.
 health-tests = []
 
+# Proof tooling: enables the `hax` feature of the libcrux dependencies, which
+# builds with `--cfg hax` (e.g. `cargo hax`) need.
+hax = ["libcrux-hmac/hax"]
+
 [dependencies]
 libcrux-hmac.workspace = true
 rand = { version = "0.10", optional = true, default-features = false }

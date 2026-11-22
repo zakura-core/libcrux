@@ -27,6 +27,10 @@ rand = { workspace = true, features = ["thread_rng"] }
 # Provides private key generation API
 rand = ["dep:rand"]
 
+# Proof tooling: enables the `hax` feature of the libcrux dependencies, which
+# builds with `--cfg hax` (e.g. `cargo hax`) need.
+hax = ["libcrux-secrets/hax"]
+
 [[bench]]
 harness = false
 name = "ecdh"

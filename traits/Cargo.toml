@@ -19,6 +19,9 @@ check-secret-independence = ["libcrux-secrets/check-secret-independence"]
 generic-tests = []
 # whether or not the alloc crate is used
 alloc = []
+# Proof tooling: enables the `hax` feature of the dependencies that have
+# `cfg(hax)` code, for builds with `--cfg hax` (`cargo hax`).
+hax = ["libcrux-secrets/hax"]
 
 [dependencies]
 rand = { version = "0.10", default-features = false }
