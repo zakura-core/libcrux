@@ -5,6 +5,21 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.0.8] (Unreleased)
+
+### Added
+
+- (libcrux-traits) [#XXXX](https://github.com/celabshq/libcrux/pull/XXXX): `hax` feature, which enables the `hax` feature of `libcrux-secrets` for builds with `--cfg hax` (`cargo hax`).
+
+### Changed
+
+- (libcrux-ml-kem) [#XXXX](https://github.com/celabshq/libcrux/pull/XXXX): `hax-lib` is now an optional dependency behind the new `hax` feature, so it is no longer added to the `Cargo.lock` of dependent crates. Builds with `--cfg hax` (`cargo hax`) must enable the `hax` feature.
+- (libcrux-ml-dsa) [#XXXX](https://github.com/celabshq/libcrux/pull/XXXX): `hax-lib` and `core-models` are now optional dependencies behind the new `hax` feature, so they are no longer added to the `Cargo.lock` of dependent crates. Builds with `--cfg hax` (`cargo hax`) must enable the `hax` feature.
+- (libcrux-sha3) [#XXXX](https://github.com/celabshq/libcrux/pull/XXXX): `hax-lib` is now an optional dependency behind the new `hax` feature, so it is no longer added to the `Cargo.lock` of dependent crates. Builds with `--cfg hax` (`cargo hax`) must enable the `hax` feature.
+- (libcrux-kmac) [#XXXX](https://github.com/celabshq/libcrux/pull/XXXX): `hax-lib` is now an optional dependency behind the new `hax` feature, so it is no longer added to the `Cargo.lock` of dependent crates. Builds with `--cfg hax` (`cargo hax`) must enable the `hax` feature.
+- (libcrux-intrinsics) [#XXXX](https://github.com/celabshq/libcrux/pull/XXXX): `hax-lib` and `core-models` are now optional dependencies behind the new `hax` feature, so they are no longer added to the `Cargo.lock` of dependent crates. Builds with `--cfg hax` (`cargo hax`) must enable the `hax` feature.
+- (libcrux-secrets) [#XXXX](https://github.com/celabshq/libcrux/pull/XXXX): `hax-lib` is now an optional dependency behind the new `hax` feature, so it is no longer added to the `Cargo.lock` of dependent crates. Builds with `--cfg hax` (`cargo hax`) must enable the `hax` feature.
+
 ## [0.0.7] (2026-11-19)
 
 ### Changed

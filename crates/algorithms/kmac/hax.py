@@ -115,6 +115,7 @@ class extractAction(argparse.Action):
         hax_extract(
             INTRINSICS,
             [
+                "-C", "--features", "hax", ";",
                 "into",
                 "-i", "-core_models::**",
                 "fstar", "--z3rlimit", "80", "--interfaces", "+**",
@@ -124,7 +125,7 @@ class extractAction(argparse.Action):
         # --- secrets ---------------------------------------------------------
         hax_extract(
             SECRETS,
-            ["into", "-i", "+**", "fstar", "--z3rlimit", "80"],
+            ["-C", "--features", "hax", ";", "into", "-i", "+**", "fstar", "--z3rlimit", "80"],
         )
 
         # --- sha3 ------------------------------------------------------------
@@ -133,6 +134,7 @@ class extractAction(argparse.Action):
         hax_extract(
             SHA3,
             [
+                "-C", "--features", "hax", ";",
                 "into",
                 "-i", "+**",
                 "-i", "-**::avx2::**",
@@ -151,6 +153,7 @@ class extractAction(argparse.Action):
         hax_extract(
             KMAC,
             [
+                "-C", "--features", "hax", ";",
                 "into",
                 "-i", "+libcrux_kmac::**",
                 "fstar",

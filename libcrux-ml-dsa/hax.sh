@@ -11,16 +11,17 @@ function extract_all() {
     rename_core_models_files crates/utils/core-models
 
     extract crates/utils/intrinsics \
-        -C --features simd128,simd256 ";" \
+        -C --features simd128,simd256,hax ";" \
         into -i "-core_models::**" \
         fstar --z3rlimit 80
 
     extract crates/utils/secrets \
+        -C --features hax ";" \
         into -i "+:**" \
         fstar
     
     extract libcrux-ml-dsa \
-        -C --features simd128,simd256 ";" \
+        -C --features simd128,simd256,hax ";" \
         into -i "+**" \
              -i "-libcrux_ml_dsa::hash_functions::portable::*" \
              -i "-libcrux_ml_dsa::hash_functions::simd256::*" \

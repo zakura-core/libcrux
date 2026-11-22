@@ -3,6 +3,9 @@
 //! This crate implements KMAC as defined in [NIST SP 800-185](https://csrc.nist.gov/pubs/sp/800/185/final).
 #![no_std]
 
+#[cfg(all(hax, not(feature = "hax")))]
+compile_error!("building with `--cfg hax` (e.g. `cargo hax`) requires the `hax` feature");
+
 mod internals {
     pub(super) mod kmac;
 }

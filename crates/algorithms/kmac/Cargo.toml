@@ -17,7 +17,13 @@ path = "src/kmac.rs"
 libcrux-sha3.workspace = true
 
 [target.'cfg(hax)'.dependencies]
-hax-lib.workspace = true
+hax-lib = { workspace = true, optional = true }
+
+[features]
+# Proof tooling. `cargo hax` builds with `--cfg hax` and needs this feature
+# for the `cfg(hax)` code; it is optional so that `hax-lib` stays out of
+# the lockfiles of crates that depend on this one.
+hax = ["dep:hax-lib", "libcrux-sha3/hax"]
 
 [dev-dependencies]
 libcrux-kats = { workspace = true, features = ["kmac"] }

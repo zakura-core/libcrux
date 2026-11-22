@@ -2,6 +2,9 @@
 #![deny(unsafe_code)]
 #![deny(unused_qualifications)]
 
+#[cfg(all(hax, not(feature = "hax")))]
+compile_error!("building with `--cfg hax` (e.g. `cargo hax`) requires the `hax` feature");
+
 #[cfg(feature = "std")]
 extern crate std;
 

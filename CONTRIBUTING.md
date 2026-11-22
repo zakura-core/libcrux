@@ -93,6 +93,12 @@ get in touch with the libcrux or HACL* maintainers.
 
 Other crates (specifically `libcrux-ml-kem` and `libcrux-ml-dsa`) are verified using [hax](https://cryspen.com/hax) and  [F\*](https://fstar-lang.org).
 To re-run proofs on these crates, follow the instructions in their Readme files.
+
+The `hax-lib` and `core-models` dependencies that the `cfg(hax)` code uses are optional,
+so that they don't end up in the `Cargo.lock` of crates that depend on libcrux.
+`cargo hax` builds every crate with `--cfg hax`, so enable the `hax` feature of the crate
+you extract, e.g. `cargo hax -C --features hax ";" into fstar`.
+The feature enables the `hax` feature of the libcrux dependencies, and the extraction scripts already pass it.
 These proofs depend on specific versions of the `hax` binary, the `hax-lib` proof and annotations library, and the `fstar` proof assistant.
 
 At the moment, we use `hax` and `hax-lib` at version `0.3.7`, so you may have to run `cargo update hax-lib --precise 0.3.7` to fetch that version, because your local one may be more recent.

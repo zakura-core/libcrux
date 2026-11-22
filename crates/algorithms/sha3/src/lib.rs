@@ -6,6 +6,9 @@
 #![forbid(unsafe_code)]
 #![deny(missing_docs)]
 
+#[cfg(all(hax, not(feature = "hax")))]
+compile_error!("building with `--cfg hax` (e.g. `cargo hax`) requires the `hax` feature");
+
 mod simd;
 
 mod generic_keccak;

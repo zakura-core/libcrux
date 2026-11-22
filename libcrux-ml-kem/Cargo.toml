@@ -31,7 +31,7 @@ libcrux-traits.workspace = true
 tls_codec = { workspace = true, optional = true }
 
 [target.'cfg(hax)'.dependencies]
-hax-lib.workspace = true
+hax-lib = { workspace = true, optional = true }
 
 [features]
 # By default all variants and std are enabled.
@@ -74,6 +74,17 @@ check-secret-independence = [
 
 # PQCP Common APIs
 pqcp = []
+
+# Proof tooling. `cargo hax` builds with `--cfg hax` and needs this feature
+# for the `cfg(hax)` code; it is optional so that `hax-lib` stays out of
+# the lockfiles of crates that depend on this one.
+hax = [
+    "dep:hax-lib",
+    "libcrux-intrinsics/hax",
+    "libcrux-secrets/hax",
+    "libcrux-sha3/hax",
+    "libcrux-traits/hax",
+]
 
 [dev-dependencies]
 rand = { version = "0.10", features = ["thread_rng"] }

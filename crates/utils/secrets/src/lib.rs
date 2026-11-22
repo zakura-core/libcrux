@@ -50,6 +50,9 @@
 //! Memcheck checks definedness of parameters as required. <https://valgrind.org/docs/manual/mc-manual.html#mc-manual.value>
 #![no_std]
 
+#[cfg(all(hax, not(feature = "hax")))]
+compile_error!("building with `--cfg hax` (e.g. `cargo hax`) requires the `hax` feature");
+
 mod traits;
 pub use traits::*;
 mod int;
