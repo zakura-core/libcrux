@@ -28,7 +28,8 @@
 //!
 //! When both the feature `check-secret-independence` and the cfg `valgrind_ct_test` are
 //! enabled, this crate issues valgrind client requests for each classify and declassify
-//! operation. Each `classify` operation will mark the memory as [`Undefined`] for valgrind
+//! operation. Builds with the cfg also need the `valgrind-ct-test` feature, which provides
+//! the `crabgrind` dependency. Each `classify` operation will mark the memory as [`Undefined`] for valgrind
 //! and each `declassify` as [`Defined`].
 //!
 //! Running the resulting binary under valgrind's memcheck
@@ -38,7 +39,7 @@
 //! Example Usage:
 //! ```shell
 //! RUSTFLAGS='--cfg valgrind_ct_test' cargo build \
-//!     --features check-secret-independence --profile release-debug
+//!     --features check-secret-independence,valgrind-ct-test --profile release-debug
 //! valgrind --tool=memcheck --error-exitcode=1 --track-origins=yes \
 //!     target/release-debug/<BINARY>
 //! ```
@@ -52,6 +53,8 @@
 
 #[cfg(all(hax, not(feature = "hax")))]
 compile_error!("building with `--cfg hax` (e.g. `cargo hax`) requires the `hax` feature");
+#[cfg(all(valgrind_ct_test, not(feature = "valgrind-ct-test")))]
+compile_error!("building with `--cfg valgrind_ct_test` requires the `valgrind-ct-test` feature");
 
 mod traits;
 pub use traits::*;

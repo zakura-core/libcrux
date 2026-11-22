@@ -19,6 +19,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - (libcrux-kmac) [#XXXX](https://github.com/celabshq/libcrux/pull/XXXX): `hax-lib` is now an optional dependency behind the new `hax` feature, so it is no longer added to the `Cargo.lock` of dependent crates. Builds with `--cfg hax` (`cargo hax`) must enable the `hax` feature.
 - (libcrux-intrinsics) [#XXXX](https://github.com/celabshq/libcrux/pull/XXXX): `hax-lib` and `core-models` are now optional dependencies behind the new `hax` feature, so they are no longer added to the `Cargo.lock` of dependent crates. Builds with `--cfg hax` (`cargo hax`) must enable the `hax` feature.
 - (libcrux-secrets) [#XXXX](https://github.com/celabshq/libcrux/pull/XXXX): `hax-lib` is now an optional dependency behind the new `hax` feature, so it is no longer added to the `Cargo.lock` of dependent crates. Builds with `--cfg hax` (`cargo hax`) must enable the `hax` feature.
+- (libcrux-secrets) [#XXXX](https://github.com/celabshq/libcrux/pull/XXXX): `crabgrind` is now an optional dependency behind the new `valgrind-ct-test` feature, so it is no longer added to the `Cargo.lock` of dependent crates. Builds with `--cfg valgrind_ct_test` must enable the `valgrind-ct-test` feature.
 
 ## [0.0.7] (2026-11-19)
 
